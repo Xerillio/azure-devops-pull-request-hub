@@ -332,7 +332,7 @@ export function DateColumn(
 ): JSX.Element {
   return (
     <TwoLineTableCell
-      key={`col-when-${columnIndex}`}
+      key={`col-created-${columnIndex}`}
       columnIndex={columnIndex}
       tableColumn={tableColumn}
       line1={

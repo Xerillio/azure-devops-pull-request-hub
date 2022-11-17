@@ -227,9 +227,16 @@ export function sortPullRequests(
   a: PullRequestModel,
   b: PullRequestModel
 ) {
+
   return UserPreferencesInstance.selectedDefaultSorting === "asc"
-    ? b.gitPullRequest.creationDate.getTime() -
-        a.gitPullRequest.creationDate.getTime()
-    : a.gitPullRequest.creationDate.getTime() -
-        b.gitPullRequest.creationDate.getTime();
+    ? comparePullRequestCreationDate(a, b)
+    : -comparePullRequestCreationDate(a, b); // Invert if descending
+}
+
+export function comparePullRequestCreationDate(
+  a: PullRequestModel,
+  b: PullRequestModel
+) {
+  return a.gitPullRequest.creationDate.getTime() -
+    b.gitPullRequest.creationDate.getTime();
 }

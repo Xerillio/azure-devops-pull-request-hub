@@ -24,8 +24,8 @@ export interface IUserSettingsProps {
 
 export function UserPreferencesPanel(props: IUserSettingsProps): JSX.Element {
   const sortDirectionItems: IListBoxItem[] = [
-    { id: "desc", text: "Oldest First", iconProps: { iconName: "SortDown" } },
-    { id: "asc", text: "Newest First", iconProps: { iconName: "SortUp" } },
+    { id: "asc", text: "Oldest First", iconProps: { iconName: "SortUp" } },
+    { id: "desc", text: "Newest First", iconProps: { iconName: "SortDown" } },
   ];
 
   const showFilterByDefault = new ObservableValue<boolean>(

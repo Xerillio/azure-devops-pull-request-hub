@@ -1073,16 +1073,8 @@ export class PullRequestsTab extends React.Component<
     null, //Status column
     null, // Title column
     null, // Details column
-    // Sort on When column
-    (
-      item1: PullRequestModel.PullRequestModel,
-      item2: PullRequestModel.PullRequestModel
-    ): number => {
-      return (
-        item2.gitPullRequest.creationDate.getTime() -
-        item1.gitPullRequest.creationDate.getTime()
-      );
-    },
+    // Sort on Created column
+    Data.comparePullRequestCreationDate,
     null, // Reviewers column
   ];
 
@@ -1112,13 +1104,13 @@ export class PullRequestsTab extends React.Component<
     },
     {
       id: "time",
-      name: "When",
+      name: "Created",
       readonly: true,
       renderCell: DateColumn,
       width: -10,
       sortProps: {
-        ariaLabelAscending: "Sorted new to older",
-        ariaLabelDescending: "Sorted older to new",
+        ariaLabelAscending: "Sorted older to new",
+        ariaLabelDescending: "Sorted new to older",
         sortOrder:
           UserPreferencesInstance.selectedDefaultSorting === "asc"
             ? SortOrder.ascending
